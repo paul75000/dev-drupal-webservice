@@ -24,7 +24,7 @@ class MapTownForm extends FormBase {
         
       ],
       '#ajax' => [
-        'callback' => array($this, 'inputDepatementAjax'),
+        'callback' => array($this, 'inputDepatementsAjax'),
         'event' => 'change', 
       ],
       '#suffix' => '<span class="text-message"></span>',
@@ -39,14 +39,14 @@ class MapTownForm extends FormBase {
       '#options' => [
         
       ],
-      '#access' => FALSE,
       '#ajax' => [
         'callback' => array($this, 'inputVillesAjax'),
         'event' => 'change', 
       ],
       '#suffix' => '<span class="text-message-communes"></span>',
+      '#access' => FALSE,
      ];
-    
+
      $form['communes'] = [
       '#type' => 'select',
       '#title' => t('communes'),
@@ -66,7 +66,7 @@ class MapTownForm extends FormBase {
   	return $form;
 	}
   
-   public function inputDepatementAjax(array &$form, FormStateInterface $form_state){
+   public function inputDepatementsAjax(array &$form, FormStateInterface $form_state){
       
       $message =  $form_state->getValue('regions');
       $response = new AjaxResponse();
@@ -89,7 +89,6 @@ class MapTownForm extends FormBase {
   public function inputVillesAjax(array &$form, FormStateInterface $form_state){
       
       $message = $form_state->getValue('departements');
-
       $response = new AjaxResponse();
 
       $client = \Drupal::service('http_client');

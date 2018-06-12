@@ -26,3 +26,7 @@ function maptown_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_s
 
   return $form;
 }
+
+function maptown_page_attachment(array &$page){
+  $page['#attached']['library'][] = 'maptown/myjs';
+}

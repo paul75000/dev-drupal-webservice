@@ -1,0 +1,7 @@
+myjs:
+  version: 1.x
+  js:
+    js/script.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
