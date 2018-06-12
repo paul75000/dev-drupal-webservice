@@ -1,0 +1,28 @@
+<?php
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\node\NodeInterface;
+
+function maptown_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id){
+  $client = \Drupal::service('http_client');
+
+  $request = $client->get('https://geo.api.gouv.fr/regions?fields=nom,code',  ['Accept' => 'application/json']);
+  $response = $request->getBody();
+  $content = $response->getContents();
+  $content = json_decode($content);
+  foreach ($content as $data) {
+  	$form['regions']['#options'][$data->code] = $data->nom;
+  }
+
+  // $request = $client->get('https://geo.api.gouv.fr/regions?fields=nom,code',  ['Accept' => 'application/json']);
+  // $response = $request->getBody();
+  // $content = $response->getContents();
+  // $content = json_decode($content);
+  // foreach ($content as $data) {
+  // 	$form['regions']['#options'][$data->code] = $data->nom;
+  // }
+
+  return $form;
+}

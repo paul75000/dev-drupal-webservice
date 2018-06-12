@@ -1,0 +1,12 @@
+#Nom du module.
+name: maptown
+#Description
+description: maptown description.
+#Type de code.
+type: module
+#Version de drupal core.
+core: 8.x
+#Version du module.
+#version: 8.x-1.0
+#Group du module
+package: map-Training

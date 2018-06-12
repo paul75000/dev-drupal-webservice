@@ -1,0 +1,15 @@
+maptown.maproute:
+  path: '/mapselection'
+  defaults:
+    _title: 'Map selection'
+    _controller: '\Drupal\maptown\Controller\MapTownController::content'
+  requirements:
+    _access: 'TRUE'
+
+maptown.formmaproute:
+  path: '/form-map'
+  defaults:
+    _title: 'Select a town'
+    _form: '\Drupal\maptown\Form\MapTownForm'
+  requirements:
+    _access: 'TRUE'
